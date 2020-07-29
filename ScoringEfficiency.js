@@ -205,7 +205,7 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 						.style("left", width + 320 + "px")
 						.style("top", height/2 + 80	 + "px")						
 						.select("#value")
-						.text("Scored 600+ Points with Catch And Shoot");
+						.text("Scored 600+ Catch And Shoot Points");
 						
 						console.log(width/2);
 			   
@@ -294,7 +294,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .range([height, 0]);
 
     var aScale = d3.scaleSqrt()      // <--New!
-    .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 10]);
+    .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
     /*var xScale = d3.scaleLog()
                    .domain([10, 150])
@@ -314,35 +314,67 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .append("circle")
     .attr("cx", function(d) { return xScale(+d.DRIVEPTS);})
     .attr("cy", function(d) { return yScale(+d.DRIVEFG);})
-    /*.attr("fill" , "lightblue")
-    .style("fill", function(d) { return color(d.PLAYER); })*/
+
     .attr('fill', function(d){return(colorScale(+d.DRIVEPTS));})
     .attr("stroke" , "black")
     .attr("r", function(d) {
-        return aScale(d.MIN);  //'a' scale for 'area'!
+        return aScale(d.MIN);  
        })
     .append("title")
        			   .text(function(d) {
        			   		return d.PLAYER;
        			   });
+				   
+				   
+				   d3.select("#tooltip")
+						.style("left", width + 320 + "px")
+						.style("top", height/2 + 100	 + "px")						
+						.select("#value")
+						.text("Scored 400+ Drive Points");
+						
+						console.log(width/2);
+			   
+					//Show the tooltip
+					d3.select("#tooltip").classed("hidden", false);			   
 
-    /*.on("mouseover" , function(d) {
-        d3.select(this).raise()
-        .append("text")
-        .attr("class","playername")
-        .text(d.player);
-      } )
-      .on("mouseout", function(d){
-        d3.selectAll("text.playername").remove();
-      })*/
+
+svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
+.selectAll("text")
+.data(data)
+.enter()
+.append("text")
+.filter(function(d) { return d.DRIVEPTS > 400 })
+.text(function(d) { return d.PLAYER; })
+.attr("x", function(d) { return xScale(+d.DRIVEPTS );})
+.attr("y", function(d) { return yScale(+d.DRIVEFG);})
+.attr("text-anchor", "middle")
+					   .attr("font-family", "sans-serif")
+					   .attr("font-size", "11px")
+					   .attr("font-weight", "bold")
+					   .attr("fill", "black");
+					   
+
+svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
+.selectAll("line")
+.data(data)
+.enter()
+.append("line")
+.filter(function(d) { return d.DRIVEPTS > 400 })
+.style("stroke" , "black")
+.style("stroke-width", 1)
+.style("stroke-dasharray", 4)
+.attr("x1", function(d) { return xScale(+d.DRIVEPTS );})
+.attr("y1", function(d) { return yScale(+d.DRIVEFG);})
+.attr("x2", width + "px")
+.attr("y2", height/2 - 95 + "px");
+
+ 
 
     var xAxis = d3.axisBottom()
                   .scale(xScale);
-                  /*.tickValues([100, 400, 800, 1200, 1600 , 2000 , 2400]).tickFormat(d3.format("~s")) ;*/
 
     var yAxis = d3.axisLeft()
                   .scale(yScale)
-                  /*.tickValues([10, 20, 40,60,80, 100]).tickFormat(d3.format("~s")) ;*/
 
                   svg.append("g").attr("transform", "translate(" + margin.left  + "," + margin.top + ")")
                       .call(yAxis);
@@ -375,25 +407,17 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
   function displayPullps(){
 
     var xScale = d3.scaleLinear()
-    /*.domain([0 , d3.max(data, function(d) { return +d.PTS; })])*/
     .domain(d3.extent(data, function(d) { return +d.PULLUPPTS; })).nice()
     .range([0, width]);
 
     var yScale = d3.scaleLinear()
-    /*.domain([0, d3.max(data, function(d) { return +d.EFG; })])*/
     .domain(d3.extent(data, function(d) { return +d.PULLUPFG; })).nice()
     .range([height, 0]);
 
     var aScale = d3.scaleSqrt()      // <--New!
-    .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 10]);
+    .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
-    /*var xScale = d3.scaleLog()
-                   .domain([10, 150])
-                   .range([0, 200]);
 
-    var yScale = d3.scaleLog().base(10)
-                   .domain([10, 150])
-                   .range([200, 0]);*/
 
 
     var colorScale = d3.scaleSequential(d3.interpolateGreens).domain([0,800]);
@@ -405,35 +429,67 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .append("circle")
     .attr("cx", function(d) { return xScale(+d.PULLUPPTS);})
     .attr("cy", function(d) { return yScale(+d.PULLUPFG);})
-    /*.attr("fill" , "lightblue")
-    .style("fill", function(d) { return color(d.PLAYER); })*/
+   
     .attr('fill', function(d){return(colorScale(+d.PULLUPPTS));})
     .attr("stroke" , "black")
     .attr("r", function(d) {
-        return aScale(d.MIN);  //'a' scale for 'area'!
+        return aScale(d.MIN);  
        })
     .append("title")
        			   .text(function(d) {
        			   		return d.PLAYER;
        			   });
+				   
+				   
+				   d3.select("#tooltip")
+						.style("left", width + 320 + "px")
+						.style("top", height/2 + 160	 + "px")						
+						.select("#value")
+						.text("Scored 400+ Pullup Points");
+						
+						console.log(width/2);
+			   
+					//Show the tooltip
+					d3.select("#tooltip").classed("hidden", false);			   
 
-    /*.on("mouseover" , function(d) {
-        d3.select(this).raise()
-        .append("text")
-        .attr("class","playername")
-        .text(d.player);
-      } )
-      .on("mouseout", function(d){
-        d3.selectAll("text.playername").remove();
-      })*/
+
+svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
+.selectAll("text")
+.data(data)
+.enter()
+.append("text")
+.filter(function(d) { return d.PULLUPPTS > 400 })
+.text(function(d) { return d.PLAYER; })
+.attr("x", function(d) { return xScale(+d.PULLUPPTS );})
+.attr("y", function(d) { return yScale(+d.PULLUPFG);})
+.attr("text-anchor", "middle")
+					   .attr("font-family", "sans-serif")
+					   .attr("font-size", "11px")
+					   .attr("font-weight", "bold")
+					   .attr("fill", "black");
+					   
+
+svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
+.selectAll("line")
+.data(data)
+.enter()
+.append("line")
+.filter(function(d) { return d.PULLUPPTS > 400 })
+.style("stroke" , "black")
+.style("stroke-width", 1)
+.style("stroke-dasharray", 4)
+.attr("x1", function(d) { return xScale(+d.PULLUPPTS );})
+.attr("y1", function(d) { return yScale(+d.PULLUPFG);})
+.attr("x2", width + "px")
+.attr("y2", height/2 - 95 + "px");
+
+    
 
     var xAxis = d3.axisBottom()
                   .scale(xScale);
-                  /*.tickValues([100, 400, 800, 1200, 1600 , 2000 , 2400]).tickFormat(d3.format("~s")) ;*/
 
     var yAxis = d3.axisLeft()
                   .scale(yScale)
-                  /*.tickValues([10, 20, 40,60,80, 100]).tickFormat(d3.format("~s")) ;*/
 
                   svg.append("g").attr("transform", "translate(" + margin.left  + "," + margin.top + ")")
                     .call(yAxis);
@@ -466,25 +522,17 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
   function displayPaint(){
 
     var xScale = d3.scaleLinear()
-    /*.domain([0 , d3.max(data, function(d) { return +d.PTS; })])*/
     .domain(d3.extent(data, function(d) { return +d.PAINTTOUCHPTS; })).nice()
     .range([0, width]);
 
     var yScale = d3.scaleLinear()
-    /*.domain([0, d3.max(data, function(d) { return +d.EFG; })])*/
     .domain(d3.extent(data, function(d) { return +d.PAINTTOUCHFG; })).nice()
     .range([height, 0]);
 
-    var aScale = d3.scaleSqrt()      // <--New!
-    .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 10]);
+    var aScale = d3.scaleSqrt()      
+    .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
-    /*var xScale = d3.scaleLog()
-                   .domain([10, 150])
-                   .range([0, 200]);
-
-    var yScale = d3.scaleLog().base(10)
-                   .domain([10, 150])
-                   .range([200, 0]);*/
+    
 
 
     var colorScale = d3.scaleSequential(d3.interpolateGreens).domain([0,350]);
@@ -496,35 +544,69 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .append("circle")
     .attr("cx", function(d) { return xScale(+d.PAINTTOUCHPTS);})
     .attr("cy", function(d) { return yScale(+d.PAINTTOUCHFG);})
-    /*.attr("fill" , "lightblue")
-    .style("fill", function(d) { return color(d.PLAYER); })*/
+  
     .attr('fill', function(d){return(colorScale(+d.PAINTTOUCHPTS));})
     .attr("stroke" , "black")
     .attr("r", function(d) {
-        return aScale(d.MIN);  //'a' scale for 'area'!
+        return aScale(d.MIN); 
        })
     .append("title")
        			   .text(function(d) {
        			   		return d.PLAYER;
        			   });
+				   
+				   
+				                           d3.select("#tooltip")
+						.style("left", width + 320 + "px")
+						.style("top", height/2 + 100	 + "px")						
+						.select("#value")
+						.text("Scored 300+ Paint Points");
+						
+						console.log(width/2);
+			   
+					//Show the tooltip
+					d3.select("#tooltip").classed("hidden", false);			   
 
-    /*.on("mouseover" , function(d) {
-        d3.select(this).raise()
-        .append("text")
-        .attr("class","playername")
-        .text(d.player);
-      } )
-      .on("mouseout", function(d){
-        d3.selectAll("text.playername").remove();
-      })*/
+
+svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
+.selectAll("text")
+.data(data)
+.enter()
+.append("text")
+.filter(function(d) { return d.PAINTTOUCHPTS > 300 })
+.text(function(d) { return d.PLAYER; })
+.attr("x", function(d) { return xScale(+d.PAINTTOUCHPTS );})
+.attr("y", function(d) { return yScale(+d.PAINTTOUCHFG);})
+.attr("text-anchor", "middle")
+					   .attr("font-family", "sans-serif")
+					   .attr("font-size", "11px")
+					   .attr("font-weight", "bold")
+					   .attr("fill", "black");
+					   
+
+svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
+.selectAll("line")
+.data(data)
+.enter()
+.append("line")
+.filter(function(d) { return d.PAINTTOUCHPTS > 300 })
+.style("stroke" , "black")
+.style("stroke-width", 1)
+.style("stroke-dasharray", 4)
+.attr("x1", function(d) { return xScale(+d.PAINTTOUCHPTS );})
+.attr("y1", function(d) { return yScale(+d.PAINTTOUCHFG);})
+.attr("x2", width + "px")
+.attr("y2", height/2 - 95 + "px");	
+
+    
 
     var xAxis = d3.axisBottom()
                   .scale(xScale);
-                  /*.tickValues([100, 400, 800, 1200, 1600 , 2000 , 2400]).tickFormat(d3.format("~s")) ;*/
+                 
 
     var yAxis = d3.axisLeft()
                   .scale(yScale)
-                  /*.tickValues([10, 20, 40,60,80, 100]).tickFormat(d3.format("~s")) ;*/
+                  
 
                   svg.append("g").attr("transform", "translate(" + margin.left  + "," + margin.top + ")")
                     .call(yAxis);
@@ -557,25 +639,17 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
   function displayPostup(){
 
     var xScale = d3.scaleLinear()
-    /*.domain([0 , d3.max(data, function(d) { return +d.PTS; })])*/
     .domain(d3.extent(data, function(d) { return +d.POSTTOUCHPTS; })).nice()
     .range([0, width]);
 
     var yScale = d3.scaleLinear()
-    /*.domain([0, d3.max(data, function(d) { return +d.EFG; })])*/
     .domain(d3.extent(data, function(d) { return +d.POSTTOUCHFG; })).nice()
     .range([height, 0]);
 
     var aScale = d3.scaleSqrt()      // <--New!
-    .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 10]);
+    .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
-    /*var xScale = d3.scaleLog()
-                   .domain([10, 150])
-                   .range([0, 200]);
-
-    var yScale = d3.scaleLog().base(10)
-                   .domain([10, 150])
-                   .range([200, 0]);*/
+ 
 
 
     var colorScale = d3.scaleSequential(d3.interpolateGreens).domain([0,250]);
@@ -587,35 +661,67 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .append("circle")
     .attr("cx", function(d) { return xScale(+d.POSTTOUCHPTS);})
     .attr("cy", function(d) { return yScale(+d.POSTTOUCHFG);})
-    /*.attr("fill" , "lightblue")
-    .style("fill", function(d) { return color(d.PLAYER); })*/
+
     .attr('fill', function(d){return(colorScale(+d.POSTTOUCHPTS));})
     .attr("stroke" , "black")
     .attr("r", function(d) {
-        return aScale(d.MIN);  //'a' scale for 'area'!
+        return aScale(d.MIN);  
        })
     .append("title")
        			   .text(function(d) {
        			   		return d.PLAYER;
        			   });
+				   
+				   
+				   d3.select("#tooltip")
+						.style("left", width + 320 + "px")
+						.style("top", height/2 + 160	 + "px")						
+						.select("#value")
+						.text("Scored 200+ Postup Points");
+						
+						console.log(width/2);
+			   
+					//Show the tooltip
+					d3.select("#tooltip").classed("hidden", false);			   
 
-    /*.on("mouseover" , function(d) {
-        d3.select(this).raise()
-        .append("text")
-        .attr("class","playername")
-        .text(d.player);
-      } )
-      .on("mouseout", function(d){
-        d3.selectAll("text.playername").remove();
-      })*/
+
+svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
+.selectAll("text")
+.data(data)
+.enter()
+.append("text")
+.filter(function(d) { return d.POSTTOUCHPTS > 200 })
+.text(function(d) { return d.PLAYER; })
+.attr("x", function(d) { return xScale(+d.POSTTOUCHPTS );})
+.attr("y", function(d) { return yScale(+d.POSTTOUCHFG);})
+.attr("text-anchor", "middle")
+					   .attr("font-family", "sans-serif")
+					   .attr("font-size", "11px")
+					   .attr("font-weight", "bold")
+					   .attr("fill", "black");
+					   
+
+svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
+.selectAll("line")
+.data(data)
+.enter()
+.append("line")
+.filter(function(d) { return d.POSTTOUCHPTS > 200 })
+.style("stroke" , "black")
+.style("stroke-width", 1)
+.style("stroke-dasharray", 4)
+.attr("x1", function(d) { return xScale(+d.POSTTOUCHPTS );})
+.attr("y1", function(d) { return yScale(+d.POSTTOUCHFG);})
+.attr("x2", width + "px")
+.attr("y2", height/2 - 95 + "px");
+
+    
 
     var xAxis = d3.axisBottom()
                   .scale(xScale);
-                  /*.tickValues([100, 400, 800, 1200, 1600 , 2000 , 2400]).tickFormat(d3.format("~s")) ;*/
 
     var yAxis = d3.axisLeft()
                   .scale(yScale)
-                  /*.tickValues([10, 20, 40,60,80, 100]).tickFormat(d3.format("~s")) ;*/
 
                   svg.append("g").attr("transform", "translate(" + margin.left  + "," + margin.top + ")")
                     .call(yAxis);
