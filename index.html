@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+<title>Golden State Warriors 2018-19 NBA Season Analysis</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<link rel="stylesheet" href="style.css">-->
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body onload='init()'>
+<!-- Header -->
+<!--<script src="shotchart.js"></script> -->
+<script src="js/ScoringEfficiency.js" type="text/javascript"></script>
+<!--<script src="ScoringEfficiency.js"></script>-->
+
+<div class="header">
+  Golden State Warriors 2018-19 NBA Season Analysis
+</div>
+
+<div class="headernavbarMessage">
+  <h3>Golden State Warriors 2018-19 Socring And Efficiency</h3>
+  <h5>Kevin Durant, Stephen Curry and Klay Thompson Score significantly more points than other player in team. They score points with good efficiency 
+  </h5>
+  <div class="slidediv">
+<!--  <div class="slideself">1</div>
+  <div class="slideothers">2</div>
+  <div class="slideothers">3</div>
+  <div class="slideothers">4</div> -->
+  <a href="index.html" class="slideself">1</a>
+  <a href="home2.html" class="slideothers">2</a>
+  <a href="#" class="slideothers">3</a>
+  <a href="#" class="slideothers">4</a>
+  <a href="home2.html" class="slideothers">Next &raquo;</a>
+  </div>
+</div>
+
+
+<!-- The flexible grid (content) -->
+<div class="row">
+  <div class="side">
+    <h4 style="margin-top:80px">Scoring Efficiency Chart</h4>
+	 <h6>Overall Scoring Efficiency is plotted against Total Points scored for  2018-19 Season. Each circle in the scatter plot represnt player from 
+	 Gloden State Warriors team. Size of the circle represnt total number of minutes played</h6>
+   <!-- <h6>Please use the drop down list to view Scoring Efficiency over differnt types of shots</h6> -->
+	<h6>Kevin Durant , Stephen Curry and Klay Thompsom scored significantly more points in each of the shot category except for shots in paint</h6>
+	<h5>Please use the drop down list to view Scoring Efficiency over differnt types of shots</h5>
+  <!--  <div class="fakeimg" style="height:200px;">Image</div>
+    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+    <h3>More Text</h3> -->
+
+  </div>
+  <div class="main">
+  <div class="select">
+    <select id="selector" value="Overall">
+      <option value="Overall">Overall</option>
+      <option value="CatchAndShoot">CatchAndShoot</option>
+      <option value="Drive">Drive</option>
+      <option value="PullUp">PullUpShots</option>
+      <option value="Paint">PaintShots</option>
+      <option value="Postup">PostupShots</option>
+    </select>
+  </div>
+  		<div id="tooltip" class="hidden">
+			<!--<p><strong>Important Label Heading</strong></p>-->
+			<p><strong><span id="value">100</span></strong></p>
+		</div>
+<svg width=800 height=600>
+ <line id="line"/>
+</svg>
+
+
+</div>
+
+<!-- Footer -->
+<!--<div class="footer">
+  <h2>Footer</h2>
+</div>-->
+
+</body>
+</html>
