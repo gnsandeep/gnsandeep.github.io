@@ -6,21 +6,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--<link rel="stylesheet" href="style.css">-->
-<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="shortchat.css" rel="stylesheet" type="text/css">
 </head>
 <body onload='init()'>
 <!-- Header -->
-<!--<script src="shotchart.js"></script> 
-<script src="js/searchalldlistjs.js"></script>-->
-<script src="ScoringEfficiency.js" type="text/javascript" ></script>
-<!--<script src="ScoringEfficiency.js"></script>-->
+
+<script src="ScoreChart.js" type="text/javascript" ></script>
 
 <div class="header">
   Golden State Warriors 2018-19 NBA Season Analysis
 </div>
 
 <div class="headernavbarMessage">
-  <h3>Golden State Warriors 2018-19 Socring And Efficiency</h3>
+  <h3>Golden State Warriors 2018-19 Socring Chart</h3>
   <h5>Kevin Durant, Stephen Curry and Klay Thompson Score significantly more points than other player in team. They score points with good efficiency 
   </h5>
   <div class="slidediv">
@@ -28,8 +26,8 @@
   <div class="slideothers">2</div>
   <div class="slideothers">3</div>
   <div class="slideothers">4</div> -->
-  <a href="index.html" class="slideself">1</a>
-  <a href="ScoreChart.html" class="slideothers">2</a>
+  <a href="index.html" class="slideothers">1</a>
+  <a href="ScoreChart.html" class="slideself">2</a>
   <a href="Assists.html" class="slideothers">3</a>
   <a href="Defense.html" class="slideothers">4</a>
   <a href="Assists.html" class="slideothers">Next &raquo;</a>
@@ -53,18 +51,33 @@
   </div>
   <div class="main">
   <div class="select">
-    <select id="selector" value="Overall">
-      <option value="Overall">Overall</option>
-      <option value="CatchAndShoot">CatchAndShoot</option>
-      <option value="Drive">Drive</option>
-      <option value="PullUp">PullUpShots</option>
-      <option value="Paint">PaintShots</option>
-      <option value="Postup">PostupShots</option>
+    <select id="selector" value="None">
+      <option value="None">None</option>
     </select>
   </div>
   		<div id="tooltip" class="hidden">
 			<!--<p><strong>Important Label Heading</strong></p>-->
 			<p><strong><span id="value">100</span></strong></p>
+		</div>
+		 <div id="tooltiprc" class="hidden">
+			<!--<p><strong>Important Label Heading</strong></p>-->
+			<p><strong><span id="value"></span></strong></p>
+		</div>
+		 <div id="tooltiplc" class="hidden">
+			<!--<p><strong>Important Label Heading</strong></p>-->
+			<p><strong><span id="value"></span></strong></p>
+		</div>
+		 <div id="tooltipr3" class="hidden">
+			<!--<p><strong>Important Label Heading</strong></p>-->
+			<p><strong><span id="value"></span></strong></p>
+		</div>
+		 <div id="tooltipl3" class="hidden">
+			<!--<p><strong>Important Label Heading</strong></p>-->
+			<p><strong><span id="value"></span></strong></p>
+		</div>
+		 <div id="tooltipc" class="hidden">
+			<!--<p><strong>Important Label Heading</strong></p>-->
+			<p><strong><span id="value"></span></strong></p>
 		</div>
 <svg width=800 height=600>
  <line id="line"/>
@@ -72,7 +85,7 @@
 
 
 </div>
-
+</div>
 <!-- Footer -->
 <!--<div class="footer">
   <h2>Footer</h2>

@@ -1,0 +1,138 @@
+
+
+*{
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+
+}
+
+/* Header/logo Title */
+.header {
+  padding: 20px;
+  text-align: center;
+   background: #006bb6 ;
+  color: #fdb927;
+}
+
+.headernavbarMessage{
+padding: 10px;
+
+}
+
+/* Column container */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 20%;
+/*  background-color: #f1f1f1;*/
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  flex: 80%;
+  background-color: white;
+  padding: 10px;
+}
+
+
+.slidediv{
+  display: flex;
+
+}
+
+.next {
+  background-color:#006bb6;
+/*  background-color: #4CAF50;*/
+  color: white;
+  border-style: solid;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 4px 8px;
+  margin-bottom: 5px;
+  border-style: solid;
+}
+
+
+.slideself{
+  text-decoration: none;
+  display: inline-block;
+/*  padding: 6px 10px;
+  background-color:#4CAF50;*/
+  background-color:#fdb927;
+  color: black;
+  /*margin-right: 10px;*/
+  margin-bottom: 5px;
+  border-style: solid;
+
+
+}
+
+.slideothers{
+  text-decoration: none;
+  display: inline-block;
+/*  padding: 6px 10px;
+/*  background-color:#4CAF50;*/
+ background-color:#006bb6;
+  color: black;
+/*  margin-right: 10px;*/
+  margin-bottom: 5px;
+  border-style: solid;
+
+}
+
+.select{
+margin-left: 10px;
+border-radius: .30em;
+
+
+}
+
+#selector{
+  border-radius: .25em;
+  margin-left: 400px;
+border-style: solid;
+
+}
+
+
+	
+
+#tooltip,#tooltiplc {
+				position: absolute;
+				width: 200px;
+				height: auto;
+				padding: 10px;
+				background-color: white;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+				pointer-events: none;
+			}
+			
+			#tooltip.hidden,#tooltiplc.hidden {
+				display: none;
+			}
+			
+			#tooltip,#tooltiplc p {
+				margin: 0;
+				font-family: sans-serif;
+				font-size: 12px;
+				line-height: 12px;
+			}

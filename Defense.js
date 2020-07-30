@@ -40,7 +40,7 @@ var yScale = d3.scaleLinear()
 .range([height, 0]);
 
 var aScale = d3.scaleSqrt()      // <--New!
-.domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 20]);
+.domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
 /*var xScale = d3.scaleLog()
                .domain([10, 150])
@@ -100,8 +100,8 @@ var dots = svg.append("g").attr("transform","translate(" + margin.left + "," + m
 
 
                         d3.select("#tooltip")
-						.style("left", width + 110 + "px")
-						.style("top", height/2 + 120	 + "px")
+						.style("left", width + 415 + "px")
+						.style("top", height/2 + 240	 + "px")
 						.select("#value")
 						.text("Played more minutes, Scored more Points with good efficiency");
 
@@ -142,71 +142,17 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .attr("y2", height/2 - 95 + "px");
 
 
-//var line = d3.select("#line");
-//var div1 = d3.select("#tooltip");
-//var div2 = $('#two');
-
-
-//var x1 = div1.offset().left + (div1.width()/2);
-//var y1 = div1.offset().top + (div1.height()/2);
-//var x1 = width/2;
-//var y1 = height/2;
-//var x2 = div2.offset().left + (div2.width()/2);
-//var y2 = div2.offset().top + (div2.height()/2);
-
-//line.attr('x1',x1).attr('y1',y1).attr('x2',x1+50).attr('y2',y1);
-
-/*var tt = svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
-.selectAll("rect")
-.data(data)
-.enter()
-.append("rect")
-.filter(function(d) { return d.PTS > 1500 })
-.attr('x', function(d) { return xScale(+d.PTS );})
-        .attr('y', function(d) { return yScale(+d.EFG);})
-        .attr('rx', 5) // round the corners
-        .attr('ry', 5)
-        .attr('opacity',1)
-        .attr('fill', 'black');
-
-var tt = svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
-.selectAll("rect")
-.data(data)
-.enter()
-.append("rect")
-.filter(function(d) { return d.PTS > 1500 })*/
 
 
 
-/*d3.selectAll(".effclass")
-.append("text")
-.text(function(d) { return d.PLAYER;   }); */
-/*.on("mouseover", function() {
-   			   		d3.select(this)
-   			   			.attr("fill", "orange");
-   			   })
-.on("mouseout", function(){
-  d3.select(this)
-    .attr("fill", "lightblue");
-  });*/
 
-/*.on("mouseover" , function(d) {
-    d3.select(this).raise()
-    .append("text")
-    .attr("class","playername")
-    .text(d.player);
-  } )
-  .on("mouseout", function(d){
-    d3.selectAll("text.playername").remove();
-  })*/
+
 
 var xAxis = d3.axisBottom()
               .scale(xScale);
-              /*.tickValues([100, 400, 800, 1200, 1600 , 2000 , 2400]).tickFormat(d3.format("~s")) ;*/
 
 var yAxis = d3.axisLeft()
               .scale(yScale)
-              /*.tickValues([10, 20, 40,60,80, 100]).tickFormat(d3.format("~s")) ;*/
 
 svg.append("g").attr("transform", "translate(" + margin.left  + "," + margin.top + ")")
     .call(yAxis);
@@ -249,7 +195,7 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 		.range([height, 0]);
 
 		var aScale = d3.scaleSqrt()      // <--New!
-		.domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 20]);
+		.domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
 
 
@@ -280,8 +226,8 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 
 
 		                        d3.select("#tooltip")
-								.style("left", width + 110 + "px")
-								.style("top", height/2 + 20	 + "px")
+								.style("left", width + 290 + "px")
+								.style("top", height/2 + 170	 + "px")
 								.select("#value")
 								.text("Played more minutes, Scored more Points with good efficiency");
 
