@@ -45,12 +45,12 @@ contours = d3.contourDensity() // Build a contourDensity object
 colour = d3.scaleSequential(d3.interpolateInferno)
     .domain([0,0.1]);
 
-data
+
 
 //	d3.select("svg").append("g").attr("transform","translate(" + 300 + "," + 100 + ")")
 d3.select("svg")
     .selectAll("path")
-    .data(contours(data)) // Use the contours as our data set
+    .data(contours(data)) 
     .enter()
     .append("path")
     .attr("class", "contour")
@@ -126,7 +126,7 @@ var shots = d3.select("svg").append("g").attr("transform","translate(" + 300 + "
 	
 	d3.select("#tooltip")
 						.style("left",  950 + "px")
-						.style("top",  260	 + "px")
+						.style("top",  360	 + "px")
 						.select("#value")
 						.text("Majority of the shots are taken around BasketBall Rim");
 
@@ -137,7 +137,7 @@ var shots = d3.select("svg").append("g").attr("transform","translate(" + 300 + "
 					
    d3.select("#tooltiplc")
 						.style("left",  950 + "px")
-						.style("top",  340	 + "px")
+						.style("top",  440	 + "px")
 						.select("#value")
 						.text("These are the other preferred locations");
 

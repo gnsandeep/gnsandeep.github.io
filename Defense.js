@@ -4,7 +4,7 @@ var svg = d3.select("svg");
 var w = 600;
 var h = 400;
 
-var margin = {top: 100, right: 100, bottom: 100, left:100};
+var margin = {top: 10, right: 100, bottom: 100, left:100};
 var    width = 800 - margin.left - margin.right;
 var    height = 600 - margin.top - margin.bottom;
 
@@ -68,34 +68,9 @@ var dots = svg.append("g").attr("transform","translate(" + margin.left + "," + m
 .attr("r", function(d) {
     return aScale(d.MIN);  //'a' scale for 'area'!
    })
-/*.on("mouseover", function(d) {
-
-					//Get this bar's x/y values, then augment for the tooltip
-					var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
-					var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
-
-					//Update the tooltip position and value
-					d3.select("#tooltip")
-						.style("left", xPosition + "px")
-						.style("top", yPosition + "px")
-						.select("#value")
-						.text(d.PLAYER);
-
-					//Show the tooltip
-					d3.select("#tooltip").classed("hidden", false);
-
-			   })
-			   .on("mouseout", function() {
-
-					//Hide the tooltip
-					d3.select("#tooltip").classed("hidden", true);
-
-			   })   */
-//.append("text").text(function(d){ return d.PLAYER;});
-
 .append("title")
    			   .text(function(d) {
-   			   		return d.PLAYER;
+   			   		return  d.PLAYER + " : " + d.STEALS + " Steals , "  + d.BLOCKS + " Blocks";
    			   });
 
 
@@ -103,7 +78,7 @@ var dots = svg.append("g").attr("transform","translate(" + margin.left + "," + m
 						.style("left", width + 415 + "px")
 						.style("top", height/2 + 240	 + "px")
 						.select("#value")
-						.text("Played more minutes, Scored more Points with good efficiency");
+						.text("Has 90+ Steals and 60+ Blocks");
 
 						console.log(width/2);
 
@@ -116,7 +91,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .data(data)
 .enter()
 .append("text")
-.filter(function(d) { return d.STEALS > 80   })
+.filter(function(d) { return ( d.STEALS > 80 & d.BLOCKS > 60)  })
 .text(function(d) { return d.PLAYER; })
 .attr("x", function(d) { return xScale(+d.STEALS );})
 .attr("y", function(d) { return yScale(+d.BLOCKS);})
@@ -132,7 +107,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .data(data)
 .enter()
 .append("line")
-.filter(function(d) { return d.STEALS > 80 })
+.filter(function(d) { return ( d.STEALS > 80 & d.BLOCKS > 60) })
 .style("stroke" , "black")
 .style("stroke-width", 1)
 .style("stroke-dasharray", 4)
@@ -164,16 +139,16 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 
       svg.append("text")
         .attr("transform",
-              "translate(" + ((width/2) + 60) + " ," +
-                             (h  + margin.top + 50 ) + ")")
+              "translate(" + ((width/2) + 100) + " ," +
+                             (h  + margin.top + 130 ) + ")")
         .style("text-anchor", "middle")
         .style("font-family", "sans-serif")
         .text("Total Steals");
 
         svg.append("text")
      .attr("transform", "rotate(-90)")
-     .attr("y", 40)
-     .attr("x", -height/2 - 80)
+     .attr("y", 50)
+     .attr("x", -height/2 - 30)
      .attr("dy", "1em")
      .style("text-anchor", "middle")
      .style("font-family", "sans-serif")
@@ -221,7 +196,7 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 
 		.append("title")
 		   			   .text(function(d) {
-		   			   		return d.PLAYER;
+		   			   		return d.PLAYER + " : " + d.DEFENSIVEREB + " Defensive Rebounds , "  + d.DFGEF + "% Defensive Efficiency";
 		   			   });
 
 
@@ -229,7 +204,7 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 								.style("left", width + 290 + "px")
 								.style("top", height/2 + 170	 + "px")
 								.select("#value")
-								.text("Played more minutes, Scored more Points with good efficiency");
+								.text("Have 400+ Defensive Rebounds and Defensive Effeciency is less than 60%");
 
 								console.log(width/2);
 
@@ -288,16 +263,16 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 
 		      svg.append("text")
 		        .attr("transform",
-		              "translate(" + ((width/2) + 60) + " ," +
-		                             (h  + margin.top + 50 ) + ")")
+		              "translate(" + ((width/2) + 100) + " ," +
+		                             (h  + margin.top + 130 ) + ")")
 		        .style("text-anchor", "middle")
 		        .style("font-family", "sans-serif")
 		        .text("Defensice Rebounds");
 
 		        svg.append("text")
 		     .attr("transform", "rotate(-90)")
-		     .attr("y", 40)
-		     .attr("x", -height/2 - 80)
+		     .attr("y", 50)
+		     .attr("x", -height/2 - 30)
 		     .attr("dy", "1em")
 		     .style("text-anchor", "middle")
 		     .style("font-family", "sans-serif")

@@ -4,7 +4,7 @@ var svg = d3.select("svg");
 var w = 600;
 var h = 400;
 
-var margin = {top: 100, right: 100, bottom: 100, left:100};
+var margin = {top: 30, right: 100, bottom: 100, left:100};
 var    width = 800 - margin.left - margin.right;
 var    height = 600 - margin.top - margin.bottom;
 
@@ -54,42 +54,17 @@ var dots = svg.append("g").attr("transform","translate(" + margin.left + "," + m
 .attr("r", function(d) {
     return aScale(+d.MIN);  //'a' scale for 'area'!
    })
-/*.on("mouseover", function(d) {
-
-					//Get this bar's x/y values, then augment for the tooltip
-					var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
-					var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
-
-					//Update the tooltip position and value
-					d3.select("#tooltip")
-						.style("left", xPosition + "px")
-						.style("top", yPosition + "px")
-						.select("#value")
-						.text(d.PLAYER);
-
-					//Show the tooltip
-					d3.select("#tooltip").classed("hidden", false);
-
-			   })
-			   .on("mouseout", function() {
-
-					//Hide the tooltip
-					d3.select("#tooltip").classed("hidden", true);
-
-			   })   */
-//.append("text").text(function(d){ return d.PLAYER;});
-
 .append("title")
    			   .text(function(d) {
-   			   		return d.PLAYER;
+   			   		return d.PLAYER + " : " + d.PASSESMADE + " Passes Made , "  + d.ASTTOPASS + "% Assist Percentage";
    			   });
 
 
                         d3.select("#tooltip")
 						.style("left", width + 400 + "px")
-						.style("top", height/2 + 230	 + "px")
+						.style("top", height/2 + 145	 + "px")
 						.select("#value")
-						.text("Have more than 500+ Assists");
+						.text("Have more than 3000+ Passes");
 
 						console.log(width/2);
 
@@ -128,63 +103,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .attr("y2", height/2 - 95 + "px");
 
 
-//var line = d3.select("#line");
-//var div1 = d3.select("#tooltip");
-//var div2 = $('#two');
 
-
-//var x1 = div1.offset().left + (div1.width()/2);
-//var y1 = div1.offset().top + (div1.height()/2);
-//var x1 = width/2;
-//var y1 = height/2;
-//var x2 = div2.offset().left + (div2.width()/2);
-//var y2 = div2.offset().top + (div2.height()/2);
-
-//line.attr('x1',x1).attr('y1',y1).attr('x2',x1+50).attr('y2',y1);
-
-/*var tt = svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
-.selectAll("rect")
-.data(data)
-.enter()
-.append("rect")
-.filter(function(d) { return d.PTS > 1500 })
-.attr('x', function(d) { return xScale(+d.PTS );})
-        .attr('y', function(d) { return yScale(+d.EFG);})
-        .attr('rx', 5) // round the corners
-        .attr('ry', 5)
-        .attr('opacity',1)
-        .attr('fill', 'black');
-
-var tt = svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
-.selectAll("rect")
-.data(data)
-.enter()
-.append("rect")
-.filter(function(d) { return d.PTS > 1500 })*/
-
-
-
-/*d3.selectAll(".effclass")
-.append("text")
-.text(function(d) { return d.PLAYER;   }); */
-/*.on("mouseover", function() {
-   			   		d3.select(this)
-   			   			.attr("fill", "orange");
-   			   })
-.on("mouseout", function(){
-  d3.select(this)
-    .attr("fill", "lightblue");
-  });*/
-
-/*.on("mouseover" , function(d) {
-    d3.select(this).raise()
-    .append("text")
-    .attr("class","playername")
-    .text(d.player);
-  } )
-  .on("mouseout", function(d){
-    d3.selectAll("text.playername").remove();
-  })*/
 
 var xAxis = d3.axisBottom()
               .scale(xScale);
@@ -204,16 +123,16 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 
       svg.append("text")
         .attr("transform",
-              "translate(" + ((width/2) + 60) + " ," +
-                             (h  + margin.top + 50 ) + ")")
+              "translate(" + ((width/2) + 80) + " ," +
+                             (h  + margin.top + 115 ) + ")")
         .style("text-anchor", "middle")
         .style("font-family", "sans-serif")
         .text("Total Passes Made");
 
         svg.append("text")
      .attr("transform", "rotate(-90)")
-     .attr("y", 40)
-     .attr("x", -height/2 - 80)
+     .attr("y", 50)
+     .attr("x", -height/2 - 40)
      .attr("dy", "1em")
      .style("text-anchor", "middle")
      .style("font-family", "sans-serif")

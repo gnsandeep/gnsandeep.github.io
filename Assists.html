@@ -10,10 +10,9 @@
 </head>
 <body onload='init()'>
 <!-- Header -->
-<!--<script src="shotchart.js"></script> 
-<script src="js/searchalldlistjs.js"></script>-->
+
 <script src="Assists.js" type="text/javascript" ></script>
-<!--<script src="ScoringEfficiency.js"></script>-->
+
 
 <div class="header">
   Golden State Warriors 2018-19 NBA Season Analysis
@@ -21,13 +20,12 @@
 
 <div class="headernavbarMessage">
   <h3>Golden State Warriors 2018-19 Assists</h3>
-  <h5>Kevin Durant, Stephen Curry and Klay Thompson Score significantly more points than other player in team. They score points with good efficiency 
+  <h5>After Exploring  Scoring , Efficiency and Scoring Location , Let's Explore who is Assisting the Scoring. <br/> <br/>
+  Kevin Durant, Stephen Curry and Draymond Green are the leaders in Total Passes made and they have better Assist Percentage (The percentage of passes which resulted in Scoring/Points). 
   </h5>
   <div class="slidediv">
-<!--  <div class="slideself">1</div>
-  <div class="slideothers">2</div>
-  <div class="slideothers">3</div>
-  <div class="slideothers">4</div> -->
+
+
    <a href="index.html" class="slideothers">1</a>
   <a href="ScoreChart.html" class="slideothers">2</a>
   <a href="Assists.html" class="slideself">3</a>
@@ -40,28 +38,13 @@
 <!-- The flexible grid (content) -->
 <div class="row">
   <div class="side">
-    <h4 style="margin-top:80px">Scoring Efficiency Chart</h4>
-	 <h6>Overall Scoring Efficiency is plotted against Total Points scored for  2018-19 Season. Each circle in the scatter plot represnt player from 
-	 Gloden State Warriors team. Size of the circle represnt total number of minutes played</h6>
-   <!-- <h6>Please use the drop down list to view Scoring Efficiency over differnt types of shots</h6> -->
-	<h6>Kevin Durant , Stephen Curry and Klay Thompsom scored significantly more points in each of the shot category except for shots in paint</h6>
-	<h5>Please use the drop down list to view Scoring Efficiency over differnt types of shots</h5>
-  <!--  <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-    <h3>More Text</h3> -->
+    <h4 style="margin-top:80px">Assist Chart</h4>
+	 <h5>Each circle/data point in the scatter plot represent players from Golden State Warriors team. Circle/data point Size represent total number of minutes played and Circle/data point are colored based on the Passes made.</h5>
+
 
   </div>
   <div class="main">
-  <!--<div class="select">
-    <select id="selector" value="Overall">
-      <option value="Overall">Overall</option>
-      <option value="CatchAndShoot">CatchAndShoot</option>
-      <option value="Drive">Drive</option>
-      <option value="PullUp">PullUpShots</option>
-      <option value="Paint">PaintShots</option>
-      <option value="Postup">PostupShots</option>
-    </select>
-  </div>-->
+
   		<div id="tooltip" class="hidden">
 			<!--<p><strong>Important Label Heading</strong></p>-->
 			<p><strong><span id="value">100</span></strong></p>
@@ -69,14 +52,10 @@
 <svg width=800 height=600>
  <line id="line"/>
 </svg>
-
+</div>
 
 </div>
 
-<!-- Footer -->
-<!--<div class="footer">
-  <h2>Footer</h2>
-</div>-->
 
 </body>
 </html>

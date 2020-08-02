@@ -5,29 +5,26 @@
 <title>Golden State Warriors 2018-19 NBA Season Analysis</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--<link rel="stylesheet" href="style.css">-->
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body onload='init()'>
-<!-- Header -->
-<!--<script src="shotchart.js"></script> 
-<script src="js/searchalldlistjs.js"></script>-->
+
 <script src="ScoringEfficiency.js" type="text/javascript" ></script>
-<!--<script src="ScoringEfficiency.js"></script>-->
 
 <div class="header">
-  Golden State Warriors 2018-19 NBA Season Analysis
+  Golden State Warriors 2018-19 Scoring and Efficiency
 </div>
 
 <div class="headernavbarMessage">
-  <h3>Golden State Warriors 2018-19 Socring And Efficiency</h3>
-  <h5>Kevin Durant, Stephen Curry and Klay Thompson Score significantly more points than other player in team. They score points with good efficiency 
+  <h3>Golden State Warriors 2018-19 Scoring and Efficiency</h3>
+  <h5>Basketball has always been, and will always be, about buckets/points  – Bill Russell, 11-time NBA champion. We can explore the Points Scored and Efficiency , Scoring locations. We can then explore assists which help in scoring . At last we can explore defense which  leads to assists and Scoring. Start by Exploring Points and Efficiency.
+  <br>
+  <br>
+Kevin Durant, Stephen Curry and Klay Thompson Scored significantly more points than other players in team. They scored points with good efficiency.
+ 
   </h5>
   <div class="slidediv">
-<!--  <div class="slideself">1</div>
-  <div class="slideothers">2</div>
-  <div class="slideothers">3</div>
-  <div class="slideothers">4</div> -->
+
   <a href="index.html" class="slideself">1</a>
   <a href="ScoreChart.html" class="slideothers">2</a>
   <a href="Assists.html" class="slideothers">3</a>
@@ -37,25 +34,22 @@
 </div>
 
 
-<!-- The flexible grid (content) -->
 <div class="row">
   <div class="side">
     <h4 style="margin-top:80px">Scoring Efficiency Chart</h4>
-	 <h6>Overall Scoring Efficiency is plotted against Total Points scored for  2018-19 Season. Each circle in the scatter plot represnt player from 
-	 Gloden State Warriors team. Size of the circle represnt total number of minutes played</h6>
-   <!-- <h6>Please use the drop down list to view Scoring Efficiency over differnt types of shots</h6> -->
-	<h6>Kevin Durant , Stephen Curry and Klay Thompsom scored significantly more points in each of the shot category except for shots in paint</h6>
-	<h5>Please use the drop down list to view Scoring Efficiency over differnt types of shots</h5>
-  <!--  <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-    <h3>More Text</h3> -->
+	 <h5>Each circle/data point in the scatter plot represent players from Golden State Warriors team. Circle/data point Size represent total number of minutes played and Circle/data point are colored based on the Points Scored.</h5>
+	<h5>Kevin Durant , Stephen Curry and Klay Thompson scored significantly more points in each of the shot category except for shots in paint.</h5>
+  
 
   </div>
   <div class="main">
+  <div class="dropdowndiv">
+   <h5 id="dropdownp">Please use the drop-down list to drill down on the Shot category</h5>
+  </div>
   <div class="select">
     <select id="selector" value="Overall">
       <option value="Overall">Overall</option>
-      <option value="CatchAndShoot">CatchAndShoot</option>
+      <option value="CatchAndShoot">CatchandShoot</option>
       <option value="Drive">Drive</option>
       <option value="PullUp">PullUpShots</option>
       <option value="Paint">PaintShots</option>
@@ -73,10 +67,7 @@
 
 </div>
 
-<!-- Footer -->
-<!--<div class="footer">
-  <h2>Footer</h2>
-</div>-->
+
 
 </body>
 </html>

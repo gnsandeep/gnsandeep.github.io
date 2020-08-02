@@ -54,7 +54,7 @@ var yScale = d3.scaleLinear()
 .domain(d3.extent(data, function(d) { return +d.EFG; })).nice()
 .range([height, 0]);
 
-var aScale = d3.scaleSqrt()      
+var aScale = d3.scaleSqrt()
 .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
 
@@ -67,32 +67,30 @@ var dots = svg.append("g").attr("transform","translate(" + margin.left + "," + m
 .data(data)
 .enter()
 .append("circle")
+
 .attr("class","effclass")
 .attr("cx", function(d) { return xScale(+d.PTS);})
 .attr("cy", function(d) { return yScale(+d.EFG);})
-/*.attr("fill" , "lightblue")
-.style("fill", function(d) { return color(d.PLAYER); })*/
+
 .attr('fill', function(d){return(colorScale(+d.PTS));})
 .attr("stroke" , "black")
 .attr("r", function(d) {
-    return aScale(d.MIN);  //'a' scale for 'area'!
+    return aScale(d.MIN);  
    })
 .append("title")
    			   .text(function(d) {
-   			   		return d.PLAYER;
+   			   		return d.PLAYER + " : " + d.PTS + " Points , "  + d.EFG + "% Efficiency";
    			   });
-			   
+
 
                         d3.select("#tooltip")
 						.style("left", width + 320 + "px")
-						.style("top", height/2 + 100	 + "px")						
+						.style("top", height/2 + 160	 + "px")
 						.select("#value")
 						.text("Scored 1500+ Points with good efficiency");
+
 						
-						console.log(width/2);
-			   
-					//Show the tooltip
-					d3.select("#tooltip").classed("hidden", false);			   
+					d3.select("#tooltip").classed("hidden", false);
 
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
@@ -109,7 +107,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 					   .attr("font-size", "11px")
 					   .attr("font-weight", "bold")
 					   .attr("fill", "black");
-					   
+
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
 .selectAll("line")
@@ -123,9 +121,9 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .attr("x1", function(d) { return xScale(+d.PTS );})
 .attr("y1", function(d) { return yScale(+d.EFG);})
 .attr("x2", width + "px")
-.attr("y2", height/2 - 95 + "px");					   
-					   
-					   
+.attr("y2", height/2 - 95 + "px");
+
+
 
 
 
@@ -146,15 +144,15 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 
       svg.append("text")
         .attr("transform",
-              "translate(" + ((width/2) + 60) + " ," +
-                             (h  + margin.top + 50 ) + ")")
+              "translate(" + ((width/2) + 90) + " ," +
+                             (h  + margin.top + 30 ) + ")")
         .style("text-anchor", "middle")
         .style("font-family", "sans-serif")
         .text("Total Points Scored");
 
         svg.append("text")
      .attr("transform", "rotate(-90)")
-     .attr("y", 40)
+     .attr("y", 50)
      .attr("x", -height/2 - 25)
      .attr("dy", "1em")
      .style("text-anchor", "middle")
@@ -174,45 +172,51 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
     .domain(d3.extent(data, function(d) { return +d.CSFG; })).nice()
     .range([height, 0]);
 
-    var aScale = d3.scaleSqrt()      
+    var aScale = d3.scaleSqrt()
     .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
-  
+
 
 
     var colorScale = d3.scaleSequential(d3.interpolateGreens).domain([0,1000]);
 
     svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
     .selectAll("circle")
+
     .data(data)
     .enter()
     .append("circle")
+
     .attr("cx", function(d) { return xScale(+d.CSPTS);})
     .attr("cy", function(d) { return yScale(+d.CSFG);})
-  
+
     .attr('fill', function(d){return(colorScale(+d.CSPTS));})
     .attr("stroke" , "black")
     .attr("r", function(d) {
-        return aScale(d.MIN);  
+        return aScale(d.MIN);
        })
+
     .append("title")
        			   .text(function(d) {
-       			   		return d.PLAYER;
+       			   		return d.PLAYER + " : " + d.CSPTS + " Points , "  + d.CSFG + "% Efficiency";
        			   });
-				   
-				   
+
+
+
+
+
 				   d3.select("#tooltip")
-						.style("left", width + 320 + "px")
-						.style("top", height/2 + 80	 + "px")						
+						.style("left", width + 380 + "px")
+						.style("top", height/2 + 140	 + "px")
 						.select("#value")
 						.text("Scored 600+ Catch And Shoot Points");
-						
+
 						console.log(width/2);
-			   
+
 					//Show the tooltip
-					d3.select("#tooltip").classed("hidden", false);	
-				   
-				   
+					d3.select("#tooltip").classed("hidden", false);
+
+
 				   svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
 .selectAll("text")
 .data(data)
@@ -227,7 +231,7 @@ svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + m
 					   .attr("font-size", "11px")
 					   .attr("font-weight", "bold")
 					   .attr("fill", "black");
-					   
+
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
 .selectAll("line")
@@ -241,9 +245,9 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .attr("x1", function(d) { return xScale(+d.CSPTS );})
 .attr("y1", function(d) { return yScale(+d.CSFG);})
 .attr("x2", width + "px")
-.attr("y2", height/2 - 115 + "px");	
+.attr("y2", height/2 - 115 + "px");
 
-   
+
 
     var xAxis = d3.axisBottom()
                   .scale(xScale);
@@ -256,7 +260,6 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
         svg.append("g").attr("transform", "translate(" + margin.left  + "," + margin.top + ")")
             .call(yAxis);
 
-        //svg.append("g").attr("transform", "translate(50," + 450 + ")")
         svg.append("g").attr("transform", "translate(" + margin.left + "," + (height + margin.top) + ")")
             .call(xAxis);
 
@@ -264,45 +267,37 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 
               svg.append("text")
                 .attr("transform",
-                      "translate(" + ((width/2) + 60) + " ," +
-                                     (h  + margin.top + 50 ) + ")")
+                      "translate(" + ((width/2) + 90) + " ," +
+                                     (h  + margin.top + 30 ) + ")")
                 .style("text-anchor", "middle")
                 .style("font-family", "sans-serif")
                 .text("Total Catch And Shoot Points Scored");
 
                 svg.append("text")
              .attr("transform", "rotate(-90)")
-             .attr("y", 40)
-             .attr("x", -height/2 - 80)
+             .attr("y", 50)
+             .attr("x", -height/2 - 20)
              .attr("dy", "1em")
              .style("text-anchor", "middle")
              .style("font-family", "sans-serif")
-             .text(" Catch And Shoot Scoring Efficiency");
+             .text("Catch And Shoot Scoring Efficiency");
 
   }
 
   function displayDrive(){
 
     var xScale = d3.scaleLinear()
-    /*.domain([0 , d3.max(data, function(d) { return +d.PTS; })])*/
     .domain(d3.extent(data, function(d) { return +d.DRIVEPTS; })).nice()
     .range([0, width]);
 
     var yScale = d3.scaleLinear()
-    /*.domain([0, d3.max(data, function(d) { return +d.EFG; })])*/
     .domain(d3.extent(data, function(d) { return +d.DRIVEFG; })).nice()
     .range([height, 0]);
 
-    var aScale = d3.scaleSqrt()      // <--New!
+    var aScale = d3.scaleSqrt()      
     .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
-    /*var xScale = d3.scaleLog()
-                   .domain([10, 150])
-                   .range([0, 200]);
-
-    var yScale = d3.scaleLog().base(10)
-                   .domain([10, 150])
-                   .range([200, 0]);*/
+ 
 
 
     var colorScale = d3.scaleSequential(d3.interpolateGreens).domain([0,500]);
@@ -318,24 +313,24 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .attr('fill', function(d){return(colorScale(+d.DRIVEPTS));})
     .attr("stroke" , "black")
     .attr("r", function(d) {
-        return aScale(d.MIN);  
+        return aScale(d.MIN);
        })
     .append("title")
        			   .text(function(d) {
-       			   		return d.PLAYER;
+       			   		return d.PLAYER + " : " + d.DRIVEPTS + " Points , "  + d.DRIVEFG + "% Efficiency";
        			   });
-				   
-				   
+
+
 				   d3.select("#tooltip")
 						.style("left", width + 320 + "px")
-						.style("top", height/2 + 100	 + "px")						
+						.style("top", height/2 + 180	 + "px")
 						.select("#value")
 						.text("Scored 400+ Drive Points");
-						
+
 						console.log(width/2);
-			   
+
 					//Show the tooltip
-					d3.select("#tooltip").classed("hidden", false);			   
+					d3.select("#tooltip").classed("hidden", false);
 
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
@@ -352,7 +347,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 					   .attr("font-size", "11px")
 					   .attr("font-weight", "bold")
 					   .attr("fill", "black");
-					   
+
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
 .selectAll("line")
@@ -368,7 +363,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .attr("x2", width + "px")
 .attr("y2", height/2 - 95 + "px");
 
- 
+
 
     var xAxis = d3.axisBottom()
                   .scale(xScale);
@@ -386,16 +381,16 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 
                         svg.append("text")
                           .attr("transform",
-                                "translate(" + ((width/2) + 60) + " ," +
-                                               (h  + margin.top + 50 ) + ")")
+                                "translate(" + ((width/2) + 90) + " ," +
+                                               (h  + margin.top + 30 ) + ")")
                           .style("text-anchor", "middle")
                           .style("font-family", "sans-serif")
                           .text("Total Drive Points Scored");
 
                           svg.append("text")
                        .attr("transform", "rotate(-90)")
-                       .attr("y", 40)
-                       .attr("x", -height/2 - 80)
+                       .attr("y", 50)
+                       .attr("x", -height/2 - 20)
                        .attr("dy", "1em")
                        .style("text-anchor", "middle")
                        .style("font-family", "sans-serif")
@@ -429,28 +424,27 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .append("circle")
     .attr("cx", function(d) { return xScale(+d.PULLUPPTS);})
     .attr("cy", function(d) { return yScale(+d.PULLUPFG);})
-   
+
     .attr('fill', function(d){return(colorScale(+d.PULLUPPTS));})
     .attr("stroke" , "black")
     .attr("r", function(d) {
-        return aScale(d.MIN);  
+        return aScale(d.MIN);
        })
     .append("title")
        			   .text(function(d) {
-       			   		return d.PLAYER;
+       			   		return d.PLAYER + " : " + d.PULLUPPTS + " Points , "  + d.PULLUPFG + "% Efficiency";
        			   });
-				   
-				   
+
+
 				   d3.select("#tooltip")
 						.style("left", width + 320 + "px")
-						.style("top", height/2 + 160	 + "px")						
+						.style("top", height/2 + 220	 + "px")
 						.select("#value")
 						.text("Scored 400+ Pullup Points");
-						
+
 						console.log(width/2);
-			   
-					//Show the tooltip
-					d3.select("#tooltip").classed("hidden", false);			   
+
+					d3.select("#tooltip").classed("hidden", false);
 
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
@@ -467,7 +461,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 					   .attr("font-size", "11px")
 					   .attr("font-weight", "bold")
 					   .attr("fill", "black");
-					   
+
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
 .selectAll("line")
@@ -483,7 +477,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .attr("x2", width + "px")
 .attr("y2", height/2 - 95 + "px");
 
-    
+
 
     var xAxis = d3.axisBottom()
                   .scale(xScale);
@@ -501,16 +495,16 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 
                       svg.append("text")
                         .attr("transform",
-                              "translate(" + ((width/2) + 60) + " ," +
-                                             (h  + margin.top + 50 ) + ")")
+                              "translate(" + ((width/2) + 90) + " ," +
+                                             (h  + margin.top + 30 ) + ")")
                         .style("text-anchor", "middle")
                         .style("font-family", "sans-serif")
                         .text("Total PullUp Points Scored");
 
                         svg.append("text")
                      .attr("transform", "rotate(-90)")
-                     .attr("y", 40)
-                     .attr("x", -height/2 - 80)
+                     .attr("y", 50)
+                     .attr("x", -height/2 - 20)
                      .attr("dy", "1em")
                      .style("text-anchor", "middle")
                      .style("font-family", "sans-serif")
@@ -529,10 +523,10 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .domain(d3.extent(data, function(d) { return +d.PAINTTOUCHFG; })).nice()
     .range([height, 0]);
 
-    var aScale = d3.scaleSqrt()      
+    var aScale = d3.scaleSqrt()
     .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
-    
+
 
 
     var colorScale = d3.scaleSequential(d3.interpolateGreens).domain([0,350]);
@@ -544,28 +538,28 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .append("circle")
     .attr("cx", function(d) { return xScale(+d.PAINTTOUCHPTS);})
     .attr("cy", function(d) { return yScale(+d.PAINTTOUCHFG);})
-  
+
     .attr('fill', function(d){return(colorScale(+d.PAINTTOUCHPTS));})
     .attr("stroke" , "black")
     .attr("r", function(d) {
-        return aScale(d.MIN); 
+        return aScale(d.MIN);
        })
     .append("title")
        			   .text(function(d) {
-       			   		return d.PLAYER;
+       			   		return d.PLAYER + " : " + d.PAINTTOUCHPTS + " Points , "  + d.PAINTTOUCHFG + "% Efficiency";
        			   });
-				   
-				   
+
+
 				                           d3.select("#tooltip")
 						.style("left", width + 320 + "px")
-						.style("top", height/2 + 100	 + "px")						
+						.style("top", height/2 + 200	 + "px")
 						.select("#value")
 						.text("Scored 300+ Paint Points");
-						
+
 						console.log(width/2);
-			   
+
 					//Show the tooltip
-					d3.select("#tooltip").classed("hidden", false);			   
+					d3.select("#tooltip").classed("hidden", false);
 
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
@@ -582,7 +576,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 					   .attr("font-size", "11px")
 					   .attr("font-weight", "bold")
 					   .attr("fill", "black");
-					   
+
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
 .selectAll("line")
@@ -596,17 +590,17 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .attr("x1", function(d) { return xScale(+d.PAINTTOUCHPTS );})
 .attr("y1", function(d) { return yScale(+d.PAINTTOUCHFG);})
 .attr("x2", width + "px")
-.attr("y2", height/2 - 95 + "px");	
+.attr("y2", height/2 - 95 + "px");
 
-    
+
 
     var xAxis = d3.axisBottom()
                   .scale(xScale);
-                 
+
 
     var yAxis = d3.axisLeft()
                   .scale(yScale)
-                  
+
 
                   svg.append("g").attr("transform", "translate(" + margin.left  + "," + margin.top + ")")
                     .call(yAxis);
@@ -618,16 +612,16 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 
                       svg.append("text")
                         .attr("transform",
-                              "translate(" + ((width/2) + 60) + " ," +
-                                             (h  + margin.top + 50 ) + ")")
+                              "translate(" + ((width/2) + 90) + " ," +
+                                             (h  + margin.top + 30 ) + ")")
                         .style("text-anchor", "middle")
                         .style("font-family", "sans-serif")
                         .text("Total Paint Points Scored");
 
                         svg.append("text")
                      .attr("transform", "rotate(-90)")
-                     .attr("y", 40)
-                     .attr("x", -height/2 - 80)
+                     .attr("y", 50)
+                     .attr("x", -height/2 - 20)
                      .attr("dy", "1em")
                      .style("text-anchor", "middle")
                      .style("font-family", "sans-serif")
@@ -649,7 +643,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     var aScale = d3.scaleSqrt()      // <--New!
     .domain([0, d3.max(data, function(d) { return +d.MIN; })]).range([0, 25]);
 
- 
+
 
 
     var colorScale = d3.scaleSequential(d3.interpolateGreens).domain([0,250]);
@@ -665,24 +659,24 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
     .attr('fill', function(d){return(colorScale(+d.POSTTOUCHPTS));})
     .attr("stroke" , "black")
     .attr("r", function(d) {
-        return aScale(d.MIN);  
+        return aScale(d.MIN);
        })
     .append("title")
        			   .text(function(d) {
-       			   		return d.PLAYER;
+       			   		return d.PLAYER + " : " + d.POSTTOUCHPTS + " Points , "  + d.POSTTOUCHFG + "% Efficiency";
        			   });
-				   
-				   
+
+
 				   d3.select("#tooltip")
 						.style("left", width + 320 + "px")
-						.style("top", height/2 + 160	 + "px")						
+						.style("top", height/2 + 220	 + "px")
 						.select("#value")
 						.text("Scored 200+ Postup Points");
-						
+
 						console.log(width/2);
-			   
+
 					//Show the tooltip
-					d3.select("#tooltip").classed("hidden", false);			   
+					d3.select("#tooltip").classed("hidden", false);
 
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
@@ -699,7 +693,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 					   .attr("font-size", "11px")
 					   .attr("font-weight", "bold")
 					   .attr("fill", "black");
-					   
+
 
 svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top + ")")
 .selectAll("line")
@@ -715,7 +709,7 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 .attr("x2", width + "px")
 .attr("y2", height/2 - 95 + "px");
 
-    
+
 
     var xAxis = d3.axisBottom()
                   .scale(xScale);
@@ -733,16 +727,16 @@ svg.append("g").attr("transform","translate(" + margin.left + "," + margin.top +
 
                       svg.append("text")
                         .attr("transform",
-                              "translate(" + ((width/2) + 60) + " ," +
-                                             (h  + margin.top + 50 ) + ")")
+                              "translate(" + ((width/2) + 90) + " ," +
+                                             (h  + margin.top + 30 ) + ")")
                         .style("text-anchor", "middle")
                         .style("font-family", "sans-serif")
                         .text("Total Postup Points Scored");
 
                         svg.append("text")
                      .attr("transform", "rotate(-90)")
-                     .attr("y", 40)
-                     .attr("x", -height/2 - 80)
+                     .attr("y", 50)
+                     .attr("x", -height/2 - 20)
                      .attr("dy", "1em")
                      .style("text-anchor", "middle")
                      .style("font-family", "sans-serif")

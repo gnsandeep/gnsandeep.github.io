@@ -9,11 +9,8 @@
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body onload='init()'>
-<!-- Header -->
-<!--<script src="shotchart.js"></script> 
-<script src="js/searchalldlistjs.js"></script>-->
+
 <script src="Defense.js" type="text/javascript" ></script>
-<!--<script src="ScoringEfficiency.js"></script>-->
 
 <div class="header">
   Golden State Warriors 2018-19 NBA Season Analysis
@@ -21,13 +18,15 @@
 
 <div class="headernavbarMessage">
   <h3>Golden State Warriors 2018-19 Defense</h3>
-  <h5>Kevin Durant, Stephen Curry and Klay Thompson Score significantly more points than other player in team. They score points with good efficiency 
+  <h5>After Exploring  Scoring , Efficiency , Scoring Location and Assists .Let's Explore  Defense Which Leads to Assists and Scoring.
+  <br/><br/>
+  Draymond Green leads in Steals and Blocks.  Kevin Durant and Draymond Green lead in Defensive Rebounds. Opponents Scoring Percentage (opponents scoring percentage when defended 
+  by a player) is low when defended by Kevin Durant and Draymond  Green.
+  <br/><br/>
+  Kevin Durant, Stephen Curry and Klay Thompson Lead the team in Scoring. Kevin Durant , Stephen Curry and Draymond Green  Lead the team in Assists. Kevin Durant and Draymond Green Lead the team in Defense.
   </h5>
   <div class="slidediv">
-<!--  <div class="slideself">1</div>
-  <div class="slideothers">2</div>
-  <div class="slideothers">3</div>
-  <div class="slideothers">4</div> -->
+
   <a href="index.html" class="slideothers">1</a>
   <a href="ScoreChart.html" class="slideothers">2</a>
   <a href="Assists.html" class="slideothers">3</a>
@@ -40,26 +39,22 @@
 <!-- The flexible grid (content) -->
 <div class="row">
   <div class="side">
-    <h4 style="margin-top:80px">Scoring Efficiency Chart</h4>
-	 <h6>Overall Scoring Efficiency is plotted against Total Points scored for  2018-19 Season. Each circle in the scatter plot represnt player from 
-	 Gloden State Warriors team. Size of the circle represnt total number of minutes played</h6>
-   <!-- <h6>Please use the drop down list to view Scoring Efficiency over differnt types of shots</h6> -->
-	<h6>Kevin Durant , Stephen Curry and Klay Thompsom scored significantly more points in each of the shot category except for shots in paint</h6>
-	<h5>Please use the drop down list to view Scoring Efficiency over differnt types of shots</h5>
-  <!--  <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-    <h3>More Text</h3> -->
+    <h4 style="margin-top:80px">Defense and Defensive Efficiency Chart</h4>
+	 <h5>Each circle/data point in the scatter plot represent players from Golden State Warriors team. Circle/data point Size represent total number of minutes played and Circle/data point are colored based on the Steals or Total Defensive Rebounds.</h5>
+
 
   </div>
   <div class="main">
+    <div class="dropdowndiv">
+   <h5 id="dropdownp">Please use the drop down list to Explore Defensive Efficency</h5>
+  </div>
   <div class="select">
     <select id="selector" value="StealAndBlocks">
       <option value="StealAndBlocks">StealAndBlocks</option>
-      <option value="DefenceEff">DefensiceEff</option>
+      <option value="DefenceEff">DefensiveEff</option>
     </select>
   </div>
   		<div id="tooltip" class="hidden">
-			<!--<p><strong>Important Label Heading</strong></p>-->
 			<p><strong><span id="value">100</span></strong></p>
 		</div>
 <svg width=800 height=600>
